@@ -2,6 +2,9 @@
 using MauiDemoUi.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
+using System.Reflection;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Configuration;
 
 namespace MauiDemoUi;
 
@@ -16,10 +19,19 @@ public static class MauiProgram
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+			})
+			.Host
+			.ConfigureAppConfiguration((app, config) =>
+			{
+				var assembly = typeof(App).GetTypeInfo().Assembly;
+				config.AddJsonFile(new EmbeddedFileProvider(assembly), "appsettings.json", optional: false, false);
 			});
 
-
-		builder.Services.AddApplication<MauiDemoUiModule>();
+		builder.Services.AddApplication<MauiDemoUiModule>(options =>
+        {
+			options.Services.ReplaceConfiguration(builder.Configuration);
+			options.UseAutofac();
+		});
 
 		var app = builder.Build();
 

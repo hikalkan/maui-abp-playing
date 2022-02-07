@@ -1,7 +1,13 @@
 ﻿@page "/"
+@using Microsoft.Extensions.Options
+@using Volo.Abp.Http.Client
+@inject IOptions<AbpRemoteServiceOptions> RemoteServiceOptions
+
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+BaseUrl: @RemoteServiceOptions.Value.RemoteServices.Default.BaseUrl
 
 <SurveyPrompt Title="How is Blazor working for you?" />
