@@ -4,6 +4,12 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiDemoUi", "MauiDemoUi\MauiDemoUi.csproj", "{4926F6DE-4323-4F48-A895-1591DA756B4D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{9744C1C9-22E8-4AAD-A0F7-2BD1350E56E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "basic-theme", "basic-theme", "{252AA021-CF1A-435D-BA4C-C805BE9E44D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Components.Web.BasicTheme", "modules\Volo.BasicTheme\src\Volo.Abp.AspNetCore.Components.Web.BasicTheme\Volo.Abp.AspNetCore.Components.Web.BasicTheme.csproj", "{EC309485-1752-4FCF-BB11-24060BF410FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,9 +22,17 @@ Global
 		{4926F6DE-4323-4F48-A895-1591DA756B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4926F6DE-4323-4F48-A895-1591DA756B4D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4926F6DE-4323-4F48-A895-1591DA756B4D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EC309485-1752-4FCF-BB11-24060BF410FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC309485-1752-4FCF-BB11-24060BF410FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC309485-1752-4FCF-BB11-24060BF410FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC309485-1752-4FCF-BB11-24060BF410FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{252AA021-CF1A-435D-BA4C-C805BE9E44D1} = {9744C1C9-22E8-4AAD-A0F7-2BD1350E56E1}
+		{EC309485-1752-4FCF-BB11-24060BF410FA} = {252AA021-CF1A-435D-BA4C-C805BE9E44D1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

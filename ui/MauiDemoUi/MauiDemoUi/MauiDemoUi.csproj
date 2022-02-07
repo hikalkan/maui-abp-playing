@@ -72,6 +72,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\backend\src\MauiDemo.HttpApi.Client\MauiDemo.HttpApi.Client.csproj" />
+		<ProjectReference Include="..\modules\Volo.BasicTheme\src\Volo.Abp.AspNetCore.Components.Web.BasicTheme\Volo.Abp.AspNetCore.Components.Web.BasicTheme.csproj" />
 	</ItemGroup>
 
 </Project>
