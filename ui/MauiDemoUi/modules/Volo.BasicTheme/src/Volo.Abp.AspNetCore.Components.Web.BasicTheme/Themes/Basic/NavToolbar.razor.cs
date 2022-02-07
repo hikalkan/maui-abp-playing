@@ -13,15 +13,17 @@ public partial class NavToolbar : IDisposable
     [Inject]
     private IToolbarManager ToolbarManager { get; set; }
 
+    /*
     [Inject]
     private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+    */
 
     private List<RenderFragment> ToolbarItemRenders { get; set; } = new List<RenderFragment>();
 
     protected override async Task OnInitializedAsync()
     {
         await GetToolbarItemRendersAsync();
-        AuthenticationStateProvider.AuthenticationStateChanged += AuthenticationStateProviderOnAuthenticationStateChanged;
+        //AuthenticationStateProvider.AuthenticationStateChanged += AuthenticationStateProviderOnAuthenticationStateChanged;
     }
 
     private async Task GetToolbarItemRendersAsync()
@@ -49,6 +51,6 @@ public partial class NavToolbar : IDisposable
 
     public void Dispose()
     {
-        AuthenticationStateProvider.AuthenticationStateChanged -= AuthenticationStateProviderOnAuthenticationStateChanged;
+        //AuthenticationStateProvider.AuthenticationStateChanged -= AuthenticationStateProviderOnAuthenticationStateChanged;
     }
 }

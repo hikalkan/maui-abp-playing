@@ -11,20 +11,22 @@ public partial class NavMenu : IDisposable
     [Inject]
     protected IMenuManager MenuManager { get; set; }
 
+    /*
     [Inject]
     protected AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+    */
 
     protected ApplicationMenu Menu { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         Menu = await MenuManager.GetMainMenuAsync();
-        AuthenticationStateProvider.AuthenticationStateChanged += AuthenticationStateProviderOnAuthenticationStateChanged;
+        //AuthenticationStateProvider.AuthenticationStateChanged += AuthenticationStateProviderOnAuthenticationStateChanged;
     }
 
     public void Dispose()
     {
-        AuthenticationStateProvider.AuthenticationStateChanged -= AuthenticationStateProviderOnAuthenticationStateChanged;
+        //AuthenticationStateProvider.AuthenticationStateChanged -= AuthenticationStateProviderOnAuthenticationStateChanged;
     }
 
     private async void AuthenticationStateProviderOnAuthenticationStateChanged(Task<AuthenticationState> task)
