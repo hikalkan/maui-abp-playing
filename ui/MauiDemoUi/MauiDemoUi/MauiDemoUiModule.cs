@@ -1,5 +1,5 @@
-﻿using Volo.Abp.Autofac;
-using Volo.Abp.Http.Client;
+﻿using MauiDemo;
+using Volo.Abp.Autofac;
 using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 
@@ -7,7 +7,8 @@ namespace MauiDemoUi
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpHttpClientIdentityModelModule)
+        typeof(AbpHttpClientIdentityModelModule),
+        typeof(MauiDemoHttpApiClientModule)
         )]
     public class MauiDemoUiModule : AbpModule
     {

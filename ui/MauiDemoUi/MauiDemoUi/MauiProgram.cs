@@ -5,6 +5,7 @@ using Volo.Abp;
 using System.Reflection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace MauiDemoUi;
 
@@ -27,10 +28,11 @@ public static class MauiProgram
 				config.AddJsonFile(new EmbeddedFileProvider(assembly), "appsettings.json", optional: false, false);
 			});
 
+		builder.Host.UseAutofac();
+
 		builder.Services.AddApplication<MauiDemoUiModule>(options =>
         {
 			options.Services.ReplaceConfiguration(builder.Configuration);
-			options.UseAutofac();
 		});
 
 		var app = builder.Build();
