@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components.WebView.Maui;
-using MauiDemoUi.Data;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
-using System.Reflection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.FileProviders;
+using System.Reflection;
+using Volo.Abp;
+using Volo.Abp.Autofac;
 
 namespace MauiDemoUi;
 
@@ -14,21 +12,16 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
+		builder.ConfigureContainer(new AbpAutofacServiceProviderFactory(new Autofac.ContainerBuilder()));
 		builder
 			.RegisterBlazorMauiWebView()
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-			})
-			.Host
-			.ConfigureAppConfiguration((app, config) =>
-			{
-				var assembly = typeof(App).GetTypeInfo().Assembly;
-				config.AddJsonFile(new EmbeddedFileProvider(assembly), "appsettings.json", optional: false, false);
 			});
 
-		builder.Host.UseAutofac();
+		ConfigureConfiguration(builder);
 
 		builder.Services.AddApplication<MauiDemoUiModule>(options =>
         {
@@ -40,5 +33,11 @@ public static class MauiProgram
 		app.Services.GetRequiredService<IAbpApplicationWithExternalServiceProvider>().Initialize(app.Services);
 
 		return app;
+	}
+
+	private static void ConfigureConfiguration(MauiAppBuilder builder)
+	{
+		var assembly = typeof(App).GetTypeInfo().Assembly;
+		builder.Configuration.AddJsonFile(new EmbeddedFileProvider(assembly), "appsettings.json", optional: false, false);
 	}
 }
